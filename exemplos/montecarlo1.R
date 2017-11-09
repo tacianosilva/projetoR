@@ -1,9 +1,17 @@
 require(MonteCarlo)
 
-test_func<-function(n,loc,scale){
+# Função que gera dados para o método estatístico t-test
+test_func<-function(n,loc,scale) {
+  
+  # Gerando amostra normal (n: número de observações, loc: média, scale: descio padrão)
   sample<-rnorm(n, loc, scale)
+  
+  # Calculo do teste estatístico (t-test)
   stat<-sqrt(n)*mean(sample)/sd(sample)
+  
+  # get test decision
   decision<-abs(stat)>1.96
+  
   return(list("decision"=decision))
 }
 
